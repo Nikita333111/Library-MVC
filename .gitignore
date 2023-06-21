@@ -1,1 +1,3 @@
-src/main/resources/database.properties
+src/main/resources/hibernate.properties
+target/classes/hibernate.properties
+target/spring-mvc-app1/WEB-INF/classes/hibernate.properties

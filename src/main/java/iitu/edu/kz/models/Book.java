@@ -1,19 +1,31 @@
 package iitu.edu.kz.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Book")
 public class Book {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "author")
     private String author;
+    @Column(name = "release_year")
     private int releaseYear;
 
-    private int person_id;
+    @ManyToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
+    private Person person;
 
-    public Book(int id, String title, String author, int releaseYear, int person_id) {
-        this.id = id;
+    public Book(String title, String author, int releaseYear, Person person) {
         this.title = title;
         this.author = author;
         this.releaseYear = releaseYear;
-        this.person_id = person_id;
+        this.person = person;
     }
 
     public Book() {
@@ -52,11 +64,22 @@ public class Book {
         this.releaseYear = releaseYear;
     }
 
-    public int getPerson_id() {
-        return person_id;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setPerson_id(int person_id) {
-        this.person_id = person_id;
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", releaseYear=" + releaseYear +
+                '}';
     }
 }

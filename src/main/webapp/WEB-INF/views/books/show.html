@@ -41,7 +41,7 @@
 </head>
 <body>
 <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getReleaseYear()}">VALUE</p>
-<div  th:if="${book.getPerson_id() == 0}">
+<div  th:if="${book.getPerson() == null}">
     <p>The book is free, whom it assigns to ?</p>
     <form th:method="PATCH" th:action="@{/books/assign/{bookId}(bookId=${book.getId()})}">
         <label for="person">assign to:</label>
@@ -54,7 +54,7 @@
     </form>
 </div>
 
-<div th:if="${book.getPerson_id() != 0}">
+<div th:if="${book.getPerson() != null}">
     <p th:text="${human.getFullName() + ' has the book now'}"></p>
     <a th:href="@{/books/release/{id}(id=${book.getId()})}">Release the book</a>
 </div>

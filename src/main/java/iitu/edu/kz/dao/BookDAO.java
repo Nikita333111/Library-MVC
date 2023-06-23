@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+//@Component
 public class BookDAO {
-
+/*
     private final SessionFactory sessionFactory;
 
     @Autowired
@@ -54,10 +54,10 @@ public class BookDAO {
     @Transactional
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        /*Book book = session.get(Book.class,id);
+        *//*Book book = session.get(Book.class,id);
         Person person = book.getPerson();
         person.getBooks().remove(book);
-        */
+        *//*
         session.remove(session.get(Book.class,id));
     }
 
@@ -81,5 +81,5 @@ public class BookDAO {
 
         person.getBooks().remove(book);
         book.setPerson(null);
-    }
+    }*/
 }

@@ -2,6 +2,7 @@ package iitu.edu.kz.models;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "Book")
@@ -16,6 +17,12 @@ public class Book {
     private String author;
     @Column(name = "release_year")
     private int releaseYear;
+    @Column(name = "date_of_taking")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateOfTaking;
+    @Transient
+    private boolean overdue = false;
+
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
@@ -72,6 +79,21 @@ public class Book {
         this.person = person;
     }
 
+    public Date getDateOfTaking() {
+        return dateOfTaking;
+    }
+
+    public void setDateOfTaking(Date dateOfTaking) {
+        this.dateOfTaking = dateOfTaking;
+    }
+
+    public boolean isOverdue() {
+        return overdue;
+    }
+
+    public void setOverdue(boolean overdue) {
+        this.overdue = overdue;
+    }
 
     @Override
     public String toString() {
@@ -80,6 +102,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", releaseYear=" + releaseYear +
+                ", taken at=" + dateOfTaking +
                 '}';
     }
 }

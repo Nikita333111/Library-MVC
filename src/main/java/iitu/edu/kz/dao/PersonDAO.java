@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+//@Component
 public class PersonDAO {
-    private final SessionFactory sessionFactory;
+   /* private final SessionFactory sessionFactory;
 
     @Autowired
     public PersonDAO(SessionFactory sessionFactory) {
@@ -58,5 +58,5 @@ public class PersonDAO {
         Session session = sessionFactory.getCurrentSession();
 
         session.remove(session.get(Person.class,id));
-    }
+    }*/
 }
